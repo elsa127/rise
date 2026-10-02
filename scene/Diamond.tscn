@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dp3lacu1sjkfp"]
+
+[ext_resource type="Script" uid="uid://rytpow382i82" path="res://script/diamond.gd" id="1_dvsdu"]
+[ext_resource type="Texture2D" uid="uid://lghhaaw7uw01" path="res://asset/asset_icon/diamond.png" id="2_hwvgl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qc24j"]
+radius = 226.02853
+height = 645.5462
+
+[node name="Diamond" type="Area2D" unique_id=822750152]
+script = ExtResource("1_dvsdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=196811924]
+position = Vector2(3, -78)
+texture = ExtResource("2_hwvgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724690413]
+position = Vector2(11, -77.99999)
+rotation = 0.18849556
+shape = SubResource("CapsuleShape2D_qc24j")

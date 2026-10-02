@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://guequxw551l"]
+
+[ext_resource type="Script" uid="uid://d2kqfgi8cnqnk" path="res://script/player_nara.gd" id="1_3hiu0"]
+[ext_resource type="Texture2D" uid="uid://bbl7vvpwc52we" path="res://asset/asset_nara_act/ch_stand.png" id="2_27i28"]
+[ext_resource type="Texture2D" uid="uid://bedtvafq4lm7j" path="res://asset/asset_nara_act/ch_jump2.png" id="4_l5p8a"]
+[ext_resource type="Texture2D" uid="uid://csf3agl1m5vnx" path="res://asset/asset_nara_act/ch_run1.png" id="7_7jr3d"]
+[ext_resource type="Texture2D" uid="uid://b5ggl5t3o68kd" path="res://asset/asset_nara_act/ch_run2.png" id="8_lftq8"]
+[ext_resource type="Texture2D" uid="uid://bm1lstp3arys2" path="res://asset/asset_nara_act/ch_walk1.png" id="9_8cv3t"]
+[ext_resource type="Texture2D" uid="uid://bw5fui0dmu28w" path="res://asset/asset_nara_act/ch_walk2.png" id="10_pbeie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8dto7"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_27i28")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l5p8a")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7jr3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lftq8")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_8cv3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pbeie")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv86h"]
+radius = 1063.0
+height = 3440.0
+
+[node name="PlayerNara" type="CharacterBody2D" unique_id=1155428735]
+script = ExtResource("1_3hiu0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=196696984]
+sprite_frames = SubResource("SpriteFrames_8dto7")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=285635380]
+position = Vector2(191, 1124)
+shape = SubResource("CapsuleShape2D_pv86h")
