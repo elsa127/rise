@@ -6,6 +6,7 @@ var already_collected = false
 
 
 func _ready():
+	add_to_group("diamond")
 	body_entered.connect(_on_body_entered)
 
 

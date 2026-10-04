@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://cdahdkxpba50j"]
+
+[ext_resource type="Script" uid="uid://c5sat67wvxd3e" path="res://script/level_complete_ui.gd" id="1_d2fmx"]
+[ext_resource type="Texture2D" uid="uid://draqcn4ag8tg7" path="res://asset/asset_bg/bg_lvl_done.png" id="2_74jsj"]
+[ext_resource type="Texture2D" uid="uid://byjl2fpjl0sb3" path="res://asset/asset_icon/gray_star.png" id="3_74jsj"]
+[ext_resource type="Texture2D" uid="uid://1mjtruwpm58g" path="res://asset/asset_txt/txt_level_complate.png" id="3_wl7gd"]
+[ext_resource type="Texture2D" uid="uid://q0lhhskj6g1o" path="res://asset/asset_icon/icn_timer.png" id="4_vcnjt"]
+[ext_resource type="Texture2D" uid="uid://lghhaaw7uw01" path="res://asset/asset_icon/diamond.png" id="5_p5hpb"]
+[ext_resource type="Texture2D" uid="uid://30g8a1krl45m" path="res://asset/asset_icon/shine_star.png" id="6_a6qcx"]
+[ext_resource type="Texture2D" uid="uid://b4mso0wrc7ymg" path="res://asset/asset_icon/icn_tinggi.png" id="7_8x6x8"]
+[ext_resource type="Texture2D" uid="uid://ro17e1qnhf6t" path="res://asset/asset_btn/btn_next_level.png" id="8_iq51c"]
+[ext_resource type="Texture2D" uid="uid://bfoorpexii3qy" path="res://asset/asset_btn/btn_main_menu-1.png" id="9_6au63"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xepy2"]
+bg_color = Color(0.9843137, 0.9372549, 0.8509804, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.96862745, 0.8784314, 0.68235296, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 15
+
+[node name="LevelCompleteUi" type="Control" unique_id=908096248]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d2fmx")
+active_star_texture = ExtResource("6_a6qcx")
+inactive_star_texture = ExtResource("3_74jsj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1720515337]
+layout_mode = 0
+offset_right = 1925.0
+offset_bottom = 1082.0
+texture = ExtResource("2_74jsj")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=338632079]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 91.0
+offset_right = 1122.0
+offset_bottom = 354.0
+texture = ExtResource("3_wl7gd")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=173045667]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 304.0
+offset_right = 1025.0
+offset_bottom = 729.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xepy2")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1807960161]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 349.0
+offset_right = 590.0
+offset_bottom = 425.0
+texture = ExtResource("4_vcnjt")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1114599345]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 431.0
+offset_right = 593.0
+offset_bottom = 507.0
+texture = ExtResource("5_p5hpb")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1615886373]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 518.0
+offset_right = 591.0
+offset_bottom = 594.0
+texture = ExtResource("6_a6qcx")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=254520267]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 599.0
+offset_right = 592.0
+offset_bottom = 675.0
+texture = ExtResource("7_8x6x8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=356980602]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 351.0
+offset_right = 715.0
+offset_bottom = 419.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1511515861]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 434.0
+offset_right = 726.0
+offset_bottom = 502.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "Crystal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=261359985]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 521.0
+offset_right = 752.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=265253260]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 608.0
+offset_right = 760.0
+offset_bottom = 676.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "Height"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeightResult" type="Label" parent="." unique_id=1679709526]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 609.0
+offset_right = 963.0
+offset_bottom = 677.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "0 M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreResult" type="Label" parent="." unique_id=1515651232]
+layout_mode = 0
+offset_left = 797.0
+offset_top = 523.0
+offset_right = 961.0
+offset_bottom = 591.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrystalResult" type="Label" parent="." unique_id=1932655299]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 435.0
+offset_right = 958.0
+offset_bottom = 503.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "0/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeResult" type="Label" parent="." unique_id=609173413]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 347.0
+offset_right = 956.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0.043137256, 0.05882353, 0.08235294, 1)
+theme_override_font_sizes/font_size = 38
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLevelButton" type="TextureButton" parent="." unique_id=1359106865]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 735.0
+offset_right = 947.0
+offset_bottom = 880.0
+texture_normal = ExtResource("8_iq51c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MainMenuButton" type="TextureButton" parent="." unique_id=1715192559]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 847.0
+offset_right = 949.0
+offset_bottom = 992.0
+texture_normal = ExtResource("9_6au63")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Star1" type="TextureRect" parent="." unique_id=1544468024]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 47.0
+offset_right = 642.0
+offset_bottom = 169.0
+texture = ExtResource("6_a6qcx")
+expand_mode = 1
+
+[node name="Star2" type="TextureRect" parent="." unique_id=1871025056]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 14.0
+offset_right = 771.0
+offset_bottom = 136.0
+texture = ExtResource("6_a6qcx")
+expand_mode = 1
+
+[node name="Star3" type="TextureRect" parent="." unique_id=1945116075]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 39.0
+offset_right = 910.0
+offset_bottom = 161.0
+texture = ExtResource("6_a6qcx")
+expand_mode = 1
