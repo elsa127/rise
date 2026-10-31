@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d305y4yawv4b5"
-path="res://.godot/imported/bg_fire.png-cb0c1a6482c0a57067844ea44f1e528f.ctex"
+uid="uid://blgkup6ulh4p2"
+path="res://.godot/imported/Gambar ChatGPT 7 Okt 2026, 09.44.20.png-7fb34ac5e545d5fa19f10fa8b2ae7196.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/asset_bg/bg_fire.png"
-dest_files=["res://.godot/imported/bg_fire.png-cb0c1a6482c0a57067844ea44f1e528f.ctex"]
+source_file="res://asset/asset_btn/Gambar ChatGPT 7 Okt 2026, 09.44.20.png"
+dest_files=["res://.godot/imported/Gambar ChatGPT 7 Okt 2026, 09.44.20.png-7fb34ac5e545d5fa19f10fa8b2ae7196.ctex"]
 
 [params]
 

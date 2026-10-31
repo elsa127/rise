@@ -1,26 +1,32 @@
 extends Control
 
 
-# ==========================================
+# =====================================================
 # SIGNAL
-# ==========================================
+# =====================================================
 
 signal next_level_requested
 signal main_menu_requested
 
 
-# ==========================================
-# ASSET BINTANG
-# Diisi lewat Inspector
-# ==========================================
+# =====================================================
+# LEVEL
+# =====================================================
+
+@export var current_level: int = 1
+
+
+# =====================================================
+# STAR TEXTURE
+# =====================================================
 
 @export var active_star_texture: Texture2D
 @export var inactive_star_texture: Texture2D
 
 
-# ==========================================
+# =====================================================
 # NODE
-# ==========================================
+# =====================================================
 
 @onready var star1: TextureRect = $Star1
 @onready var star2: TextureRect = $Star2
@@ -35,25 +41,29 @@ signal main_menu_requested
 @onready var main_menu_button: TextureButton = $MainMenuButton
 
 
-# ==========================================
+# =====================================================
 # READY
-# ==========================================
+# =====================================================
 
 func _ready():
-	# Awal game UI tidak terlihat
+
 	visible = false
 
-	# Tetap aktif walaupun game sedang pause
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	# Tetap bisa diklik ketika Level1 di-pause
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	# Sambungkan tombol
-	next_level_button.pressed.connect(_on_next_level_pressed)
-	main_menu_button.pressed.connect(_on_main_menu_pressed)
+	next_level_button.pressed.connect(
+		_on_next_level_pressed
+	)
+
+	main_menu_button.pressed.connect(
+		_on_main_menu_pressed
+	)
 
 
-# ==========================================
-# TAMPILKAN HASIL LEVEL
-# ==========================================
+# =====================================================
+# SHOW RESULT
+# =====================================================
 
 func show_result(
 	time_text: String,
@@ -62,70 +72,88 @@ func show_result(
 	score: int,
 	height: int
 ):
-	# Waktu
+
 	time_result.text = time_text
 
-	# Crystal
 	crystal_result.text = (
 		str(crystals_collected)
 		+ "/"
 		+ str(total_crystals)
 	)
 
-	# Score
 	score_result.text = str(score)
 
-	# Height
-	height_result.text = str(height) + " M"
+	height_result.text = (
+		str(height)
+		+ " M"
+	)
+
 
 	# Hitung bintang
-	var stars = calculate_stars(
+	var stars: int = calculate_stars(
 		crystals_collected,
 		total_crystals
 	)
 
+
 	update_stars(stars)
 
-	# Tampilkan layar Level Complete
+
+	# =================================================
+	# SIMPAN PROGRESS
+	# =================================================
+
+	GameProgress.complete_level(
+		current_level,
+		crystals_collected,
+		stars
+	)
+
+
 	visible = true
 
 
-# ==========================================
+# =====================================================
 # HITUNG BINTANG
-# ==========================================
+# =====================================================
 
 func calculate_stars(
 	crystals_collected: int,
 	total_crystals: int
 ) -> int:
 
-	# Finish pasti minimal 1 bintang
-	var stars = 1
+	var stars: int = 1
+
 
 	if total_crystals <= 0:
 		return stars
 
-	# Minimal 60% crystal
-	# Contoh 3/5
-	if crystals_collected >= ceil(total_crystals * 0.6):
+
+	# 60% diamond = 2 bintang
+	if crystals_collected >= ceil(
+		total_crystals * 0.6
+	):
 		stars = 2
 
-	# Semua crystal
+
+	# Semua diamond = 3 bintang
 	if crystals_collected >= total_crystals:
 		stars = 3
+
 
 	return stars
 
 
-# ==========================================
-# UPDATE GAMBAR BINTANG
-# ==========================================
+# =====================================================
+# UPDATE BINTANG
+# =====================================================
 
 func update_stars(stars: int):
 
 	if active_star_texture == null:
 		print("Active Star Texture belum diisi!")
 		return
+
 
 	if inactive_star_texture == null:
 		print("Inactive Star Texture belum diisi!")
@@ -150,21 +178,23 @@ func update_stars(stars: int):
 		star3.texture = inactive_star_texture
 
 
-# ==========================================
+# =====================================================
 # NEXT LEVEL
-# ==========================================
+# =====================================================
 
 func _on_next_level_pressed():
-	get_tree().paused = false
+
+	print("NEXT LEVEL BUTTON DIPENCET")
 
 	next_level_requested.emit()
 
 
-# ==========================================
+# =====================================================
 # MAIN MENU
-# ==========================================
+# =====================================================
 
 func _on_main_menu_pressed():
-	get_tree().paused = false
+
+	print("MAIN MENU WIN DIPENCET")
 
 	main_menu_requested.emit()

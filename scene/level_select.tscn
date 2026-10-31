@@ -1,0 +1,423 @@
+[gd_scene format=3 uid="uid://b5xlj4h4rg0hh"]
+
+[ext_resource type="Script" uid="uid://cxtgjuv6h2vm" path="res://script/level_select.gd" id="1_a7li1"]
+[ext_resource type="Texture2D" uid="uid://6q2kblfoq4gt" path="res://asset/asset_bg/bg_2.png" id="1_fxs0b"]
+[ext_resource type="Texture2D" uid="uid://v3tlwekd7aj6" path="res://asset/asset_btn/btn_back.png" id="2_gulu6"]
+[ext_resource type="Texture2D" uid="uid://dg6liye3vpspd" path="res://asset/asset_board/lvl_1.png" id="3_eeqjc"]
+[ext_resource type="Texture2D" uid="uid://30g8a1krl45m" path="res://asset/asset_icon/shine_star.png" id="4_w7ar2"]
+[ext_resource type="Texture2D" uid="uid://lghhaaw7uw01" path="res://asset/asset_icon/diamond.png" id="5_sxlbb"]
+[ext_resource type="Texture2D" uid="uid://byjl2fpjl0sb3" path="res://asset/asset_icon/gray_star.png" id="5_t7l1b"]
+[ext_resource type="Texture2D" uid="uid://c37jdcqbdpobp" path="res://asset/asset_btn/btn_play.png" id="6_5034v"]
+[ext_resource type="Texture2D" uid="uid://chfttmapm6myu" path="res://asset/asset_board/lvl_2.png" id="7_5034v"]
+[ext_resource type="Texture2D" uid="uid://7d7jo3ce2ynj" path="res://asset/asset_board/lvl_3.png" id="8_a7li1"]
+[ext_resource type="Texture2D" uid="uid://yofmxth7v3li" path="res://asset/asset_icon/lock.png" id="9_t7l1b"]
+[ext_resource type="Texture2D" uid="uid://ddnqijjlj2gj8" path="res://asset/asset_icon/proges.png" id="10_s7glx"]
+[ext_resource type="Texture2D" uid="uid://dvltx52x234qf" path="res://asset/asset_icon/proges_gray.png" id="11_bjflu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xepy2"]
+bg_color = Color(0.20671998, 0.68, 0.0884, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc24j"]
+bg_color = Color(0.9999998, 0.74212074, 0.22216475, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dto7"]
+bg_color = Color(0.9098039, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="LevelSelect" type="Control" unique_id=1842355030]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a7li1")
+active_progress_texture = ExtResource("10_s7glx")
+inactive_progress_texture = ExtResource("9_t7l1b")
+active_star_texture = ExtResource("4_w7ar2")
+inactive_star_texture = ExtResource("5_t7l1b")
+
+[node name="BG" type="TextureRect" parent="." unique_id=407290449]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("1_fxs0b")
+expand_mode = 1
+
+[node name="BackButton" type="TextureButton" parent="." unique_id=1205504933]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 25.0
+offset_right = 250.0
+offset_bottom = 194.0
+texture_normal = ExtResource("2_gulu6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Card1" type="Control" parent="." unique_id=121847625]
+anchors_preset = 0
+offset_left = -117.0
+offset_top = -3.0
+offset_right = -77.0
+offset_bottom = 37.0
+
+[node name="Bg" type="TextureRect" parent="Card1" unique_id=1428851823]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 203.0
+offset_right = 805.0
+offset_bottom = 852.0
+texture = ExtResource("3_eeqjc")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Card1" unique_id=521937009]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 509.0
+offset_right = 722.0
+offset_bottom = 553.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "1. THE OLD TOWER"
+
+[node name="Difficulty" type="Panel" parent="Card1" unique_id=22179843]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 557.0
+offset_right = 692.0
+offset_bottom = 602.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xepy2")
+
+[node name="Label2" type="Label" parent="Card1/Difficulty" unique_id=1186124612]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 196.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "Easy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Star1" type="TextureRect" parent="Card1" unique_id=1786247509]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 604.0
+offset_right = 556.0
+offset_bottom = 679.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star2" type="TextureRect" parent="Card1" unique_id=1835220392]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 604.0
+offset_right = 628.0
+offset_bottom = 679.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star3" type="TextureRect" parent="Card1" unique_id=2114420932]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 604.0
+offset_right = 694.0
+offset_bottom = 679.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="DiamondIcon" type="Sprite2D" parent="Card1" unique_id=1959190641]
+position = Vector2(526.93744, 712.8125)
+scale = Vector2(0.09311206, 0.10149415)
+texture = ExtResource("5_sxlbb")
+
+[node name="DiamondLabel" type="Label" parent="Card1" unique_id=298578805]
+layout_mode = 0
+offset_left = 575.93726
+offset_top = 686.81256
+offset_right = 679.93726
+offset_bottom = 739.81256
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+text = "0/5"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="Card1" unique_id=114106634]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 731.0
+offset_right = 800.0
+offset_bottom = 857.0
+texture_normal = ExtResource("6_5034v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Card2" type="Control" parent="." unique_id=838370940]
+anchors_preset = 0
+offset_left = 392.0
+offset_top = -25.0
+offset_right = 432.0
+offset_bottom = 15.0
+
+[node name="Bg" type="TextureRect" parent="Card2" unique_id=1791251129]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 226.0
+offset_right = 805.0
+offset_bottom = 875.0
+texture = ExtResource("8_a7li1")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Card2" unique_id=322504692]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 532.0
+offset_right = 770.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "2. THE BURNING TOWER"
+
+[node name="Difficulty" type="Panel" parent="Card2" unique_id=1200417138]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 580.0
+offset_right = 692.0
+offset_bottom = 625.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qc24j")
+
+[node name="Label2" type="Label" parent="Card2/Difficulty" unique_id=1392364182]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 196.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "Medium"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Star1" type="TextureRect" parent="Card2" unique_id=314343480]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 627.0
+offset_right = 556.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star2" type="TextureRect" parent="Card2" unique_id=1943613232]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 627.0
+offset_right = 628.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star3" type="TextureRect" parent="Card2" unique_id=659956580]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 627.0
+offset_right = 694.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="DiamondIcon" type="Sprite2D" parent="Card2" unique_id=395556230]
+position = Vector2(526.93744, 735.8125)
+scale = Vector2(0.09311206, 0.10149415)
+texture = ExtResource("5_sxlbb")
+
+[node name="DiamondLabel" type="Label" parent="Card2" unique_id=117178200]
+layout_mode = 0
+offset_left = 575.93726
+offset_top = 709.81256
+offset_right = 679.93726
+offset_bottom = 762.81256
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+text = "0/10"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="Card2" unique_id=2032112351]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 754.0
+offset_right = 800.0
+offset_bottom = 880.0
+texture_normal = ExtResource("6_5034v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LockIcon" type="TextureRect" parent="Card2" unique_id=2056251658]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 288.0
+offset_right = 652.0
+offset_bottom = 456.0
+texture = ExtResource("9_t7l1b")
+expand_mode = 1
+
+[node name="Card3" type="Control" parent="." unique_id=554619638]
+anchors_preset = 0
+offset_left = 907.0
+offset_top = -25.0
+offset_right = 947.0
+offset_bottom = 15.0
+
+[node name="Bg" type="TextureRect" parent="Card3" unique_id=1809524332]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 226.0
+offset_right = 805.0
+offset_bottom = 875.0
+texture = ExtResource("7_5034v")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Card3" unique_id=932373130]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 532.0
+offset_right = 722.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "3. THE SKY TOWER"
+
+[node name="Difficulty" type="Panel" parent="Card3" unique_id=2060696295]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 580.0
+offset_right = 692.0
+offset_bottom = 625.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8dto7")
+
+[node name="Label2" type="Label" parent="Card3/Difficulty" unique_id=826478596]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 196.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "Hard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Star1" type="TextureRect" parent="Card3" unique_id=1080167844]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 627.0
+offset_right = 556.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star2" type="TextureRect" parent="Card3" unique_id=1974130194]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 627.0
+offset_right = 628.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="Star3" type="TextureRect" parent="Card3" unique_id=2098676140]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 627.0
+offset_right = 694.0
+offset_bottom = 702.0
+texture = ExtResource("4_w7ar2")
+expand_mode = 1
+
+[node name="DiamondIcon" type="Sprite2D" parent="Card3" unique_id=570041377]
+position = Vector2(526.93744, 735.8125)
+scale = Vector2(0.09311206, 0.10149415)
+texture = ExtResource("5_sxlbb")
+
+[node name="DiamondLabel" type="Label" parent="Card3" unique_id=286365230]
+layout_mode = 0
+offset_left = 575.93726
+offset_top = 709.81256
+offset_right = 679.93726
+offset_bottom = 762.81256
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+text = "0/???"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="Card3" unique_id=1366487274]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 754.0
+offset_right = 800.0
+offset_bottom = 880.0
+texture_normal = ExtResource("6_5034v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LockIcon" type="TextureRect" parent="Card3" unique_id=694368637]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 283.0
+offset_right = 662.0
+offset_bottom = 451.0
+texture = ExtResource("9_t7l1b")
+expand_mode = 1
+
+[node name="TowerIcon1" type="TextureRect" parent="." unique_id=914576514]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 860.0
+offset_right = 512.0
+offset_bottom = 969.0
+texture = ExtResource("10_s7glx")
+expand_mode = 1
+
+[node name="TowerIcon2" type="TextureRect" parent="." unique_id=602101750]
+layout_mode = 0
+offset_left = 891.0
+offset_top = 858.0
+offset_right = 1023.0
+offset_bottom = 967.0
+texture = ExtResource("11_bjflu")
+expand_mode = 1
+
+[node name="LockProgress" type="TextureRect" parent="." unique_id=488818840]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 858.0
+offset_right = 1540.0
+offset_bottom = 967.0
+texture = ExtResource("9_t7l1b")
+expand_mode = 1
+
+[node name="ProgressLine" type="ColorRect" parent="." unique_id=1016372610]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 930.0
+offset_right = 906.0
+offset_bottom = 945.0
+
+[node name="ProgressLine2" type="ColorRect" parent="." unique_id=1486486002]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 924.0
+offset_right = 1424.0
+offset_bottom = 939.0

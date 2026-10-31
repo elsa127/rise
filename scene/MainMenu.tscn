@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cri1lx884q6gi"]
+
+[ext_resource type="Script" uid="uid://cqgmjxlylxavm" path="res://script/main_menu.gd" id="1_rvc10"]
+[ext_resource type="Texture2D" uid="uid://dvhhv4eaemylp" path="res://asset/asset_bg/bg_start2.png" id="2_85i58"]
+[ext_resource type="PackedScene" uid="uid://b5xlj4h4rg0hh" path="res://scene/level_select.tscn" id="2_q4ih2"]
+[ext_resource type="Texture2D" uid="uid://bk4skrrjmnpi0" path="res://asset/asset_btn/btn_play-1.png" id="3_q4ih2"]
+[ext_resource type="Texture2D" uid="uid://blgkup6ulh4p2" path="res://asset/asset_btn/Gambar ChatGPT 7 Okt 2026, 09.44.20.png" id="4_b5lh0"]
+[ext_resource type="Texture2D" uid="uid://ddn5pvh4o4vu5" path="res://asset/asset_btn/Gambar ChatGPT 7 Okt 2026, 09.44.35.png" id="5_581fk"]
+[ext_resource type="AudioStream" uid="uid://4h0mgowhcje1" path="res://asset_musik/them6.MP3" id="6_ee4am"]
+
+[node name="MainMenu" type="Control" unique_id=841960268]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rvc10")
+level_select_scene = ExtResource("2_q4ih2")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=406088934]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_85i58")
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=184078087]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 508.0
+offset_right = 1390.0
+offset_bottom = 678.0
+texture_normal = ExtResource("3_q4ih2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SkinButton" type="TextureButton" parent="." unique_id=2078748001]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 648.0
+offset_right = 1387.0
+offset_bottom = 818.0
+texture_normal = ExtResource("4_b5lh0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=1571041500]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 768.0
+offset_right = 1410.0
+offset_bottom = 947.0
+texture_normal = ExtResource("5_581fk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=237938125]
+stream = ExtResource("6_ee4am")

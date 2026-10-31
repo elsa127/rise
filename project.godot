@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="rise"
+run/main_scene="uid://dwne5bs00830v"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameProgress="*uid://dnwmdlek21m5e"
 
 [display]
 

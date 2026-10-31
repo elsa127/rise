@@ -1,9 +1,17 @@
 extends Node2D
 
 
-# ==========================================
+# =====================================================
+# SCENE PATH
+# =====================================================
+
+const MAIN_MENU_PATH: String = "res://scene/main_menu.tscn"
+const LEVEL_SELECT_PATH: String = "res://scene/level_select.tscn"
+
+
+# =====================================================
 # HUD
-# ==========================================
+# =====================================================
 
 @onready var diamond_label: Label = $HUD/DiamondLabel
 
@@ -15,90 +23,98 @@ extends Node2D
 @onready var height_label: Label = $HUD/HeightLabel
 
 
-# ==========================================
+# =====================================================
 # PLAYER
-# ==========================================
+# =====================================================
 
 @onready var player: CharacterBody2D = $PlayerNara
 
 
-# ==========================================
+# =====================================================
 # RESULT UI
-# ==========================================
+# =====================================================
 
 @onready var level_complete_ui = $HUD/LevelCompleteUI
 @onready var game_over_ui = $HUD/GameOverUI
 
 
-# ==========================================
+# =====================================================
 # DIAMOND
-# ==========================================
+# =====================================================
 
 var diamonds_collected: int = 0
 var total_diamonds: int = 0
 
 
-# ==========================================
+# =====================================================
 # HEALTH
-# ==========================================
+# =====================================================
 
 var lives: int = 3
 
-# Supaya satu sentuhan duri tidak mengurangi
-# hati berkali-kali dalam waktu sangat cepat
 var can_take_damage: bool = true
 
 const DAMAGE_COOLDOWN: float = 1.0
 
 
-# ==========================================
+# =====================================================
 # TIMER
-# ==========================================
+# =====================================================
 
-var time_left: float = 60.0
+const LEVEL_TIME: float = 60.0
+
+var time_left: float = LEVEL_TIME
 var timer_finished: bool = false
 
 
-# ==========================================
+# =====================================================
 # HEIGHT
-# ==========================================
+# =====================================================
 
 var start_player_y: float = 0.0
 
 
-# ==========================================
+# =====================================================
 # STATUS LEVEL
-# ==========================================
+# =====================================================
 
 var level_finished: bool = false
 
 
-# ==========================================
+# =====================================================
 # READY
-# ==========================================
+# =====================================================
 
 func _ready():
 
-	# ------------------------------------------
+	# Pastikan level tidak masih pause
+	get_tree().paused = false
+
+
+	# -------------------------------------------------
 	# DIAMOND
-	# ------------------------------------------
+	# -------------------------------------------------
 
 	var diamonds = get_tree().get_nodes_in_group("diamond")
 
 	total_diamonds = diamonds.size()
 
+
 	for diamond in diamonds:
+
 		if diamond.has_signal("collected"):
+
 			diamond.collected.connect(
 				_on_diamond_collected
 			)
 
+
 	update_diamond_ui()
 
 
-	# ------------------------------------------
+	# -------------------------------------------------
 	# HEALTH
-	# ------------------------------------------
+	# -------------------------------------------------
 
 	lives = 3
 	can_take_damage = true
@@ -106,25 +122,28 @@ func _ready():
 	update_health_ui()
 
 
-	# ------------------------------------------
+	# -------------------------------------------------
 	# TIMER
-	# ------------------------------------------
+	# -------------------------------------------------
+
+	time_left = LEVEL_TIME
+	timer_finished = false
 
 	update_timer_ui()
 
 
-	# ------------------------------------------
+	# -------------------------------------------------
 	# HEIGHT
-	# ------------------------------------------
+	# -------------------------------------------------
 
 	start_player_y = player.global_position.y
 
 	update_height_ui()
 
 
-	# ------------------------------------------
-	# LEVEL COMPLETE UI
-	# ------------------------------------------
+	# -------------------------------------------------
+	# LEVEL COMPLETE SIGNAL
+	# -------------------------------------------------
 
 	level_complete_ui.next_level_requested.connect(
 		_on_next_level_requested
@@ -135,9 +154,9 @@ func _ready():
 	)
 
 
-	# ------------------------------------------
-	# GAME OVER UI
-	# ------------------------------------------
+	# -------------------------------------------------
+	# GAME OVER SIGNAL
+	# -------------------------------------------------
 
 	game_over_ui.retry_requested.connect(
 		_on_retry_requested
@@ -148,31 +167,35 @@ func _ready():
 	)
 
 
-# ==========================================
+# =====================================================
 # PROCESS
-# ==========================================
+# =====================================================
 
-func _process(delta):
+func _process(delta: float):
 
 	if level_finished:
 		return
 
+
 	update_timer(delta)
+
 	update_height_ui()
 
 
-# ==========================================
+# =====================================================
 # DIAMOND
-# ==========================================
+# =====================================================
 
 func _on_diamond_collected():
 
 	if level_finished:
 		return
 
+
 	diamonds_collected += 1
 
 	update_diamond_ui()
+
 
 	print(
 		"Diamond: ",
@@ -183,6 +206,7 @@ func _on_diamond_collected():
 
 
 	if diamonds_collected >= total_diamonds:
+
 		print("SEMUA DIAMOND TERKUMPUL!")
 
 
@@ -195,9 +219,9 @@ func update_diamond_ui():
 	)
 
 
-# ==========================================
+# =====================================================
 # HEALTH
-# ==========================================
+# =====================================================
 
 func take_damage(amount: int = 1):
 
@@ -205,7 +229,6 @@ func take_damage(amount: int = 1):
 		return
 
 
-	# Sedang kebal sementara
 	if not can_take_damage:
 		return
 
@@ -213,7 +236,6 @@ func take_damage(amount: int = 1):
 	can_take_damage = false
 
 
-	# Kurangi nyawa SATU KALI
 	lives -= amount
 
 
@@ -227,9 +249,9 @@ func take_damage(amount: int = 1):
 	print("Nyawa sekarang: ", lives)
 
 
-	# ------------------------------------------
+	# -------------------------------------------------
 	# NYAWA HABIS
-	# ------------------------------------------
+	# -------------------------------------------------
 
 	if lives <= 0:
 
@@ -240,17 +262,15 @@ func take_damage(amount: int = 1):
 		return
 
 
-	# ------------------------------------------
+	# -------------------------------------------------
 	# DAMAGE COOLDOWN
-	# ------------------------------------------
+	# -------------------------------------------------
 
 	await get_tree().create_timer(
 		DAMAGE_COOLDOWN
 	).timeout
 
 
-	# Jangan aktifkan damage lagi kalau level
-	# ternyata sudah selesai saat menunggu
 	if level_finished:
 		return
 
@@ -265,11 +285,11 @@ func update_health_ui():
 	heart3.visible = lives >= 3
 
 
-# ==========================================
+# =====================================================
 # TIMER
-# ==========================================
+# =====================================================
 
-func update_timer(delta):
+func update_timer(delta: float):
 
 	if time_left <= 0:
 		return
@@ -318,9 +338,9 @@ func update_timer_ui():
 	]
 
 
-# ==========================================
+# =====================================================
 # HEIGHT
-# ==========================================
+# =====================================================
 
 func update_height_ui():
 
@@ -342,14 +362,31 @@ func update_height_ui():
 	height_label.text = str(height)
 
 
-# ==========================================
+func get_current_height() -> int:
+
+	var distance_up: float = (
+		start_player_y
+		- player.global_position.y
+	)
+
+
+	if distance_up < 0:
+		distance_up = 0
+
+
+	return int(
+		distance_up / 10.0
+	)
+
+
+# =====================================================
 # WAKTU HASIL
-# ==========================================
+# =====================================================
 
 func get_elapsed_time_text() -> String:
 
 	var elapsed_time: float = (
-		60.0
+		LEVEL_TIME
 		- time_left
 	)
 
@@ -375,30 +412,9 @@ func get_elapsed_time_text() -> String:
 	]
 
 
-# ==========================================
-# HEIGHT HASIL
-# ==========================================
-
-func get_current_height() -> int:
-
-	var distance_up: float = (
-		start_player_y
-		- player.global_position.y
-	)
-
-
-	if distance_up < 0:
-		distance_up = 0
-
-
-	return int(
-		distance_up / 10.0
-	)
-
-
-# ==========================================
+# =====================================================
 # SCORE
-# ==========================================
+# =====================================================
 
 func calculate_score() -> int:
 
@@ -418,9 +434,9 @@ func calculate_score() -> int:
 	)
 
 
-# ==========================================
+# =====================================================
 # LEVEL COMPLETE
-# ==========================================
+# =====================================================
 
 func level_complete():
 
@@ -434,10 +450,18 @@ func level_complete():
 	print("LEVEL 1 COMPLETE!")
 
 
-	# Stop player
+	# -------------------------------------------------
+	# STOP PLAYER
+	# -------------------------------------------------
+
 	player.velocity = Vector2.ZERO
+
 	player.set_physics_process(false)
 
+
+	# -------------------------------------------------
+	# HASIL
+	# -------------------------------------------------
 
 	var time_text: String = (
 		get_elapsed_time_text()
@@ -454,6 +478,10 @@ func level_complete():
 	)
 
 
+	# -------------------------------------------------
+	# LEVEL COMPLETE UI
+	# -------------------------------------------------
+
 	level_complete_ui.show_result(
 		time_text,
 		diamonds_collected,
@@ -463,13 +491,13 @@ func level_complete():
 	)
 
 
+	# Pause gameplay
 	get_tree().paused = true
 
 
-# ==========================================
+# =====================================================
 # LAVA / ES
-# LANGSUNG KALAH
-# ==========================================
+# =====================================================
 
 func instant_game_over():
 
@@ -485,9 +513,9 @@ func instant_game_over():
 	show_game_over("LAVA")
 
 
-# ==========================================
+# =====================================================
 # GAME OVER
-# ==========================================
+# =====================================================
 
 func show_game_over(reason: String):
 
@@ -504,10 +532,18 @@ func show_game_over(reason: String):
 	)
 
 
-	# Stop player
+	# -------------------------------------------------
+	# STOP PLAYER
+	# -------------------------------------------------
+
 	player.velocity = Vector2.ZERO
+
 	player.set_physics_process(false)
 
+
+	# -------------------------------------------------
+	# HASIL
+	# -------------------------------------------------
 
 	var time_text: String = (
 		get_elapsed_time_text()
@@ -524,6 +560,10 @@ func show_game_over(reason: String):
 	)
 
 
+	# -------------------------------------------------
+	# TAMPILKAN GAME OVER
+	# -------------------------------------------------
+
 	game_over_ui.show_game_over(
 		time_text,
 		diamonds_collected,
@@ -536,66 +576,94 @@ func show_game_over(reason: String):
 	get_tree().paused = true
 
 
-# ==========================================
-# RETRY
-# ==========================================
+# =====================================================
+# GANTI SCENE AMAN
+# =====================================================
+
+func change_scene_safely(path: String):
+
+	get_tree().paused = false
+
+
+	if not ResourceLoader.exists(path):
+
+		print(
+			"ERROR: SCENE TIDAK DITEMUKAN: ",
+			path
+		)
+
+		return
+
+
+	var error = get_tree().change_scene_to_file(
+		path
+	)
+
+
+	print(
+		"HASIL PINDAH SCENE: ",
+		error
+	)
+
+
+# =====================================================
+# GAME OVER → RETRY
+# =====================================================
 
 func _on_retry_requested():
 
+	print("RETRY DIPENCET")
+
+
 	get_tree().paused = false
+
 
 	get_tree().reload_current_scene()
 
 
-# ==========================================
-# NEXT LEVEL
-# ==========================================
+# =====================================================
+# LEVEL COMPLETE → NEXT LEVEL
+# =====================================================
 
 func _on_next_level_requested():
 
-	get_tree().paused = false
-
-	print("NEXT LEVEL")
-
-
-	# Nanti setelah level 2 jadi:
-	#
-	# get_tree().change_scene_to_file(
-	#	"res://scene/level_2.tscn"
-	# )
+	print(
+		"WIN → LEVEL SELECT"
+	)
 
 
-# ==========================================
-# MAIN MENU DARI LEVEL COMPLETE
-# ==========================================
+	change_scene_safely(
+		LEVEL_SELECT_PATH
+	)
+
+
+# =====================================================
+# LEVEL COMPLETE → MAIN MENU
+# =====================================================
 
 func _on_level_complete_main_menu_requested():
 
-	get_tree().paused = false
-
-	print("MAIN MENU")
-
-
-	# Nanti:
-	#
-	# get_tree().change_scene_to_file(
-	#	"res://scene/main_menu.tscn"
-	# )
+	print(
+		"WIN → MAIN MENU"
+	)
 
 
-# ==========================================
-# MAIN MENU DARI GAME OVER
-# ==========================================
+	change_scene_safely(
+		MAIN_MENU_PATH
+	)
+
+
+# =====================================================
+# GAME OVER → MAIN MENU
+# =====================================================
 
 func _on_game_over_main_menu_requested():
 
-	get_tree().paused = false
+	print(
+		"GAME OVER → MAIN MENU"
+	)
 
-	print("MAIN MENU")
 
-
-	# Nanti:
-	#
-	# get_tree().change_scene_to_file(
-	#	"res://scene/main_menu.tscn"
-	# )
+	change_scene_safely(
+		MAIN_MENU_PATH
+	)

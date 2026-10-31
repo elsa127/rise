@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://1fmvrqot7wg4" path="res://asset/asset_bg/bg_game_over_ice.png" id="1_5ur3m"]
 [ext_resource type="Script" uid="uid://blbdqkmfwjy2g" path="res://script/game_over_ui.gd" id="1_g6gei"]
+[ext_resource type="PackedScene" uid="uid://cri1lx884q6gi" path="res://scene/MainMenu.tscn" id="2_dggpw"]
 [ext_resource type="Texture2D" uid="uid://csbrp0acqjo08" path="res://asset/asset_btn/btn_restart_beku.png" id="2_g6gei"]
 [ext_resource type="Texture2D" uid="uid://8rax47ldnthc" path="res://asset/asset_btn/btn_menu_beku.png" id="3_dggpw"]
 [ext_resource type="Texture2D" uid="uid://q0lhhskj6g1o" path="res://asset/asset_icon/icn_timer.png" id="4_gx3fi"]
@@ -13,6 +14,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_g6gei")
+main_menu_scene = ExtResource("2_dggpw")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=71077350]
 layout_mode = 0

@@ -5,6 +5,7 @@ var finished: bool = false
 
 func _ready():
 	print("FINISH LINE SIAP!")
+
 	body_entered.connect(_on_body_entered)
 
 
@@ -24,3 +25,5 @@ func _on_body_entered(body):
 		if level.has_method("level_complete"):
 			print("MEMANGGIL LEVEL COMPLETE!")
 			level.level_complete()
+		else:
+			print("ERROR: level_complete tidak ditemukan")

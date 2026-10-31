@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c5sat67wvxd3e" path="res://script/level_complete_ui.gd" id="1_d2fmx"]
 [ext_resource type="Texture2D" uid="uid://draqcn4ag8tg7" path="res://asset/asset_bg/bg_lvl_done.png" id="2_74jsj"]
+[ext_resource type="PackedScene" uid="uid://b5xlj4h4rg0hh" path="res://scene/level_select.tscn" id="2_vcnjt"]
 [ext_resource type="Texture2D" uid="uid://byjl2fpjl0sb3" path="res://asset/asset_icon/gray_star.png" id="3_74jsj"]
+[ext_resource type="PackedScene" uid="uid://cri1lx884q6gi" path="res://scene/MainMenu.tscn" id="3_p5hpb"]
 [ext_resource type="Texture2D" uid="uid://1mjtruwpm58g" path="res://asset/asset_txt/txt_level_complate.png" id="3_wl7gd"]
 [ext_resource type="Texture2D" uid="uid://q0lhhskj6g1o" path="res://asset/asset_icon/icn_timer.png" id="4_vcnjt"]
 [ext_resource type="Texture2D" uid="uid://lghhaaw7uw01" path="res://asset/asset_icon/diamond.png" id="5_p5hpb"]
@@ -29,6 +31,8 @@ corner_detail = 15
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_d2fmx")
+level_select_scene = ExtResource("2_vcnjt")
+main_menu_scene = ExtResource("3_p5hpb")
 active_star_texture = ExtResource("6_a6qcx")
 inactive_star_texture = ExtResource("3_74jsj")
 

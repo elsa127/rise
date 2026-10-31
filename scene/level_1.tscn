@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://q0lhhskj6g1o" path="res://asset/asset_icon/icn_timer.png" id="10_ri5j0"]
 [ext_resource type="Texture2D" uid="uid://bd1rxs3hfqpbl" path="res://asset/asset_btn/btn_paused.png" id="11_1gcq6"]
 [ext_resource type="Script" uid="uid://b2pcwmotd3ho7" path="res://script/pause_menu.gd" id="12_3m3n6"]
+[ext_resource type="PackedScene" uid="uid://cri1lx884q6gi" path="res://scene/MainMenu.tscn" id="13_x7fcw"]
 [ext_resource type="Texture2D" uid="uid://dkbtmjo7u4qtk" path="res://asset/asset_board/bg_paused.png" id="13_yjpfi"]
 [ext_resource type="Texture2D" uid="uid://bi326euntx7i4" path="res://asset/asset_btn/btn_resume.png" id="14_srmle"]
 [ext_resource type="Texture2D" uid="uid://bxn6aeyu7und5" path="res://asset/asset_btn/btn_restart.png" id="15_14v7s"]
@@ -24,6 +25,9 @@
 [ext_resource type="Script" uid="uid://bi7jhd4vi5x3n" path="res://script/ice_lava.gd" id="20_msvid"]
 [ext_resource type="Texture2D" uid="uid://b0awyhalmfvu7" path="res://asset/asset_bg/ice.png" id="21_ckop6"]
 [ext_resource type="Script" uid="uid://boyn1mrht2c5f" path="res://script/finish_line.gd" id="21_ivxew"]
+[ext_resource type="AudioStream" uid="uid://kvtby2anmygr" path="res://asset_musik/Ice_Cracking.mp3" id="25_1smuy"]
+[ext_resource type="AudioStream" uid="uid://bv8ac8yca8gqd" path="res://asset_musik/them1.MP3" id="25_rr2ul"]
+[ext_resource type="Script" uid="uid://df1c2nvesoptv" path="res://script/ice_sfx.gd" id="26_tr33b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
 size = Vector2(391, 9.000015)
@@ -423,7 +427,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PauseMenu" type="Control" parent="HUD" unique_id=293219213]
-process_mode = 2
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -432,11 +436,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_3m3n6")
+main_menu_scene = ExtResource("13_x7fcw")
 
 [node name="DarkOverlay" type="ColorRect" parent="HUD/PauseMenu" unique_id=1692055424]
 layout_mode = 0
 offset_right = 1923.0
 offset_bottom = 1076.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.61960787)
 
 [node name="PauseBG" type="TextureRect" parent="HUD/PauseMenu" unique_id=1830032693]
@@ -592,3 +598,14 @@ shape = SubResource("RectangleShape2D_pv86h")
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="IceLava" unique_id=906749086]
 position = Vector2(1935, 5377)
 shape = SubResource("RectangleShape2D_pv86h")
+
+[node name="IceSFX" type="AudioStreamPlayer" parent="IceLava" unique_id=56412103]
+stream = ExtResource("25_1smuy")
+volume_db = -2.628
+autoplay = true
+script = ExtResource("26_tr33b")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="." unique_id=408131254]
+stream = ExtResource("25_rr2ul")
+volume_db = -20.096
+autoplay = true
