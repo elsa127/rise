@@ -28,6 +28,9 @@
 [ext_resource type="AudioStream" uid="uid://kvtby2anmygr" path="res://asset_musik/Ice_Cracking.mp3" id="25_1smuy"]
 [ext_resource type="AudioStream" uid="uid://bv8ac8yca8gqd" path="res://asset_musik/them1.MP3" id="25_rr2ul"]
 [ext_resource type="Script" uid="uid://df1c2nvesoptv" path="res://script/ice_sfx.gd" id="26_tr33b"]
+[ext_resource type="AudioStream" uid="uid://c0uf4hxqnqxdt" path="res://asset_musik/jump.MP3" id="29_ifjy7"]
+[ext_resource type="AudioStream" uid="uid://bhwx1hiv7rra3" path="res://asset_musik/hurt.MP3" id="30_1fx5s"]
+[ext_resource type="AudioStream" uid="uid://bs06nd7j4j2k8" path="res://asset_musik/lava.mp3" id="31_o8euq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
 size = Vector2(391, 9.000015)
@@ -602,10 +605,18 @@ shape = SubResource("RectangleShape2D_pv86h")
 [node name="IceSFX" type="AudioStreamPlayer" parent="IceLava" unique_id=56412103]
 stream = ExtResource("25_1smuy")
 volume_db = -2.628
-autoplay = true
 script = ExtResource("26_tr33b")
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="." unique_id=408131254]
 stream = ExtResource("25_rr2ul")
 volume_db = -20.096
 autoplay = true
+
+[node name="SFXJump" type="AudioStreamPlayer" parent="." unique_id=1150334184]
+stream = ExtResource("29_ifjy7")
+
+[node name="SFXHurt" type="AudioStreamPlayer" parent="." unique_id=1794994053]
+stream = ExtResource("30_1fx5s")
+
+[node name="SFXLava" type="AudioStreamPlayer" parent="." unique_id=197424725]
+stream = ExtResource("31_o8euq")
