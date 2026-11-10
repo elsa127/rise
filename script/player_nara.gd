@@ -8,9 +8,9 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = get_node_or_null("Camera2D") as Camera2D
 
-@onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX
-@onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
-@onready var walk_sfx: AudioStreamPlayer2D = $WalkSFX
+@onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX2
+@onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX2
+@onready var walk_sfx: AudioStreamPlayer2D = $WalkSFX2
 
 
 # =====================================================
