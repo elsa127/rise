@@ -32,6 +32,9 @@
 [ext_resource type="AudioStream" uid="uid://c0uf4hxqnqxdt" path="res://asset_musik/jump.MP3" id="29_ifjy7"]
 [ext_resource type="AudioStream" uid="uid://bhwx1hiv7rra3" path="res://asset_musik/hurt.MP3" id="30_1fx5s"]
 [ext_resource type="AudioStream" uid="uid://bs06nd7j4j2k8" path="res://asset_musik/lava.mp3" id="31_o8euq"]
+[ext_resource type="AudioStream" uid="uid://0x1l4jsx1t64" path="res://asset_musik/sound_efect_touch.mp3" id="33_877j3"]
+[ext_resource type="AudioStream" uid="uid://b2ba57bjsflfr" path="res://asset_musik/game_over.mp3" id="34_8mred"]
+[ext_resource type="AudioStream" uid="uid://bm34pyu2c2ce" path="res://asset_musik/diamonds.MP3" id="35_45hbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
 size = Vector2(391, 9.000015)
@@ -624,3 +627,12 @@ autoplay = true
 
 [node name="LavaSFX" type="AudioStreamPlayer" parent="." unique_id=197424725]
 stream = ExtResource("31_o8euq")
+
+[node name="SFXTouch" type="AudioStreamPlayer" parent="." unique_id=1806293078]
+stream = ExtResource("33_877j3")
+
+[node name="SFXGameOver" type="AudioStreamPlayer" parent="." unique_id=1975677952]
+stream = ExtResource("34_8mred")
+
+[node name="SFXDiamonds" type="AudioStreamPlayer" parent="." unique_id=387611609]
+stream = ExtResource("35_45hbu")
