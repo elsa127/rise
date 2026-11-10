@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://guequxw551l" path="res://scene/player_nara.tscn" id="3_c1764"]
 [ext_resource type="Texture2D" uid="uid://6878y3b83sdi" path="res://asset/asset_step/step_normal.png" id="4_ri5j0"]
 [ext_resource type="Texture2D" uid="uid://caaanokuw86l6" path="res://asset/asset_step/step_berduri.png" id="5_1gcq6"]
+[ext_resource type="AudioStream" uid="uid://dde0c3tltmgti" path="res://asset_musik/walk1.MP3" id="6_1fx5s"]
 [ext_resource type="PackedScene" uid="uid://dp3lacu1sjkfp" path="res://scene/Diamond.tscn" id="6_a2j0k"]
 [ext_resource type="Script" uid="uid://b72eganut6xkc" path="res://script/damage_area.gd" id="6_c1764"]
 [ext_resource type="Texture2D" uid="uid://lghhaaw7uw01" path="res://asset/asset_icon/diamond.png" id="7_i3j6g"]
@@ -97,6 +98,15 @@ limit_right = 1920
 limit_bottom = 5180
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="JumpSFX2" type="AudioStreamPlayer" parent="PlayerNara" unique_id=1150334184]
+stream = ExtResource("29_ifjy7")
+
+[node name="HurtSFX2" type="AudioStreamPlayer" parent="PlayerNara" unique_id=1794994053]
+stream = ExtResource("30_1fx5s")
+
+[node name="WalkSFX2" type="AudioStreamPlayer" parent="PlayerNara" unique_id=1157922059]
+stream = ExtResource("6_1fx5s")
 
 [node name="StartPlatform" type="StaticBody2D" parent="." unique_id=501539149]
 
@@ -612,11 +622,5 @@ stream = ExtResource("25_rr2ul")
 volume_db = -20.096
 autoplay = true
 
-[node name="SFXJump" type="AudioStreamPlayer" parent="." unique_id=1150334184]
-stream = ExtResource("29_ifjy7")
-
-[node name="SFXHurt" type="AudioStreamPlayer" parent="." unique_id=1794994053]
-stream = ExtResource("30_1fx5s")
-
-[node name="SFXLava" type="AudioStreamPlayer" parent="." unique_id=197424725]
+[node name="LavaSFX" type="AudioStreamPlayer" parent="." unique_id=197424725]
 stream = ExtResource("31_o8euq")
