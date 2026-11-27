@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 # =====================================================
 # SCENE PATH
 # =====================================================
@@ -37,6 +38,13 @@ const LEVEL_SELECT_PATH: String = "res://scene/level_select.tscn"
 @onready var level_complete_ui = $HUD/LevelCompleteUI
 @onready var game_over_ui = $HUD/GameOverUI
 
+# =====================================================
+# AUDIO LEVEL
+# =====================================================
+@onready var bg_music: AudioStreamPlayer = $BGMusic
+# Menggunakan get_node_or_null agar tidak error jika node SFX belum dibuat
+@onready var sfx_win: AudioStreamPlayer = get_node_or_null("WinSFX")
+@onready var sfx_game_over: AudioStreamPlayer = get_node_or_null("GameOverSFX")
 
 # =====================================================
 # DIAMOND
@@ -89,6 +97,10 @@ func _ready():
 
 	# Pastikan level tidak masih pause
 	get_tree().paused = false
+		# Putar Background Music
+	if bg_music != null:
+		bg_music.volume_db = -10.0 # Atur volume (opsional)
+		bg_music.play()
 
 
 	# -------------------------------------------------
@@ -493,6 +505,11 @@ func level_complete():
 
 	# Pause gameplay
 	get_tree().paused = true
+		# Audio saat menang
+	if bg_music != null:
+		bg_music.stop()
+	if sfx_win != null:
+		sfx_win.play() 
 
 
 # =====================================================
@@ -574,6 +591,11 @@ func show_game_over(reason: String):
 
 
 	get_tree().paused = true
+		# Audio saat game over
+	if bg_music != null:
+		bg_music.stop()
+	if sfx_game_over != null:
+		sfx_game_over.play()
 
 
 # =====================================================
