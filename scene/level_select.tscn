@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://yofmxth7v3li" path="res://asset/asset_icon/lock.png" id="9_t7l1b"]
 [ext_resource type="Texture2D" uid="uid://ddnqijjlj2gj8" path="res://asset/asset_icon/proges.png" id="10_s7glx"]
 [ext_resource type="Texture2D" uid="uid://dvltx52x234qf" path="res://asset/asset_icon/proges_gray.png" id="11_bjflu"]
+[ext_resource type="AudioStream" uid="uid://ddo2psdwnubef" path="res://asset_musik/them2.MP3" id="14_s7glx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xepy2"]
 bg_color = Color(0.20671998, 0.68, 0.0884, 1)
@@ -421,3 +422,7 @@ offset_left = 1027.0
 offset_top = 924.0
 offset_right = 1424.0
 offset_bottom = 939.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=207005942]
+stream = ExtResource("14_s7glx")
+volume_db = -8.0

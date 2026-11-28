@@ -9,6 +9,12 @@ extends Control
 
 
 # ==========================================
+# AUDIO MENU
+# ==========================================
+@onready var menu_music: AudioStreamPlayer = get_node_or_null("MenuMusic")
+
+
+# ==========================================
 # BUTTON
 # ==========================================
 
@@ -24,6 +30,11 @@ extends Control
 func _ready():
 
 	get_tree().paused = false
+
+	# Putar musik menu saat game dibuka
+	if menu_music != null and not menu_music.playing:
+		menu_music.volume_db = -8.0
+		menu_music.play()
 
 	play_button.pressed.connect(
 		_on_play_pressed
@@ -46,6 +57,9 @@ func _on_play_pressed():
 
 	print("PLAY DIPENCET → LEVEL SELECT")
 
+	# Hentikan musik menu sebelum pindah scene
+	if menu_music != null:
+		menu_music.stop()
 
 	if level_select_scene == null:
 

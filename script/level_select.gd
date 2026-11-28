@@ -4,11 +4,14 @@ extends Control
 # =====================================================
 # PATH SCENE
 # =====================================================
-# Kalau nama/path scene kamu berbeda,
-# tinggal sesuaikan dua baris ini.
-
 const MAIN_MENU_PATH: String = "res://scene/MainMenu.tscn"
 const LEVEL_1_PATH: String = "res://scene/level_1.tscn"
+
+
+# =====================================================
+# AUDIO MENU
+# =====================================================
+@onready var menu_music: AudioStreamPlayer = get_node_or_null("MenuMusic")
 
 
 # =====================================================
@@ -90,7 +93,6 @@ const LEVEL_1_PATH: String = "res://scene/level_1.tscn"
 
 # =====================================================
 # PROGRESS BAR
-# DICARI OTOMATIS DI SELURUH LEVEL SELECT
 # =====================================================
 
 @onready var tower_icon1: TextureRect = (
@@ -136,7 +138,6 @@ const LEVEL_1_PATH: String = "res://scene/level_1.tscn"
 
 # =====================================================
 # TEXTURE
-# ISI LEWAT INSPECTOR ROOT LevelSelect
 # =====================================================
 
 @export var active_progress_texture: Texture2D
@@ -215,6 +216,11 @@ const INACTIVE_LINE_COLOR := Color(
 # =====================================================
 
 func _ready():
+
+	# Putar musik menu saat Level Select dibuka
+	if menu_music != null and not menu_music.playing:
+		menu_music.volume_db = -8.0
+		menu_music.play()
 
 	get_tree().paused = false
 
@@ -654,7 +660,6 @@ func update_progress_bar():
 
 	if level2_unlocked:
 
-		# Tower 2 jadi aktif
 		if tower_icon2 != null:
 
 			if active_progress_texture != null:
@@ -664,7 +669,6 @@ func update_progress_bar():
 				)
 
 
-		# Garis menuju Level 2 aktif
 		if progress_line1 != null:
 
 			progress_line1.modulate = (
@@ -674,7 +678,6 @@ func update_progress_bar():
 
 	else:
 
-		# Tower Level 2 abu-abu
 		if tower_icon2 != null:
 
 			if inactive_progress_texture != null:
@@ -697,7 +700,6 @@ func update_progress_bar():
 
 	if level3_unlocked:
 
-		# Garis Level 2 → Level 3 aktif
 		if progress_line2 != null:
 
 			progress_line2.modulate = (
@@ -705,7 +707,6 @@ func update_progress_bar():
 			)
 
 
-		# Lock bawah hilang
 		if lock_progress != null:
 
 			lock_progress.visible = false
@@ -713,7 +714,6 @@ func update_progress_bar():
 
 	else:
 
-		# Garis masih belum aktif
 		if progress_line2 != null:
 
 			progress_line2.modulate = (
@@ -721,7 +721,6 @@ func update_progress_bar():
 			)
 
 
-		# Lock Level 3 masih muncul
 		if lock_progress != null:
 
 			lock_progress.visible = true
@@ -861,6 +860,10 @@ func card_unhover(
 
 func _on_back_pressed():
 
+	# Hentikan musik menu sebelum kembali ke Main Menu
+	if menu_music != null:
+		menu_music.stop()
+
 	print(
 		"BACK → MAIN MENU"
 	)
@@ -899,6 +902,10 @@ func _on_back_pressed():
 # =====================================================
 
 func _on_level1_pressed():
+
+	# Hentikan musik menu sebelum masuk level
+	if menu_music != null:
+		menu_music.stop()
 
 	if not level1_unlocked:
 		return
@@ -943,6 +950,10 @@ func _on_level1_pressed():
 
 func _on_level2_pressed():
 
+	# Hentikan musik menu sebelum masuk level
+	if menu_music != null:
+		menu_music.stop()
+
 	if not level2_unlocked:
 
 		print(
@@ -967,6 +978,10 @@ func _on_level2_pressed():
 # =====================================================
 
 func _on_level3_pressed():
+
+	# Hentikan musik menu sebelum masuk level
+	if menu_music != null:
+		menu_music.stop()
 
 	if not level3_unlocked:
 
